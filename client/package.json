@@ -1,0 +1,32 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.2.3",
+    "prettier": "^1.7.3",
+    "react": "^16.0.0",
+    "react-autobind": "^1.0.6",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.14",
+    "socket.io-client": "^2.0.3",
+    "socket.io-react": "^1.2.0"
+  },
+  "scripts": {
+    "start": "node -r dotenv/config ./node_modules/.bin/react-scripts start dotenv_config_path=.env",
+    "build": "node -r dotenv/config ./node_modules/.bin/react-scripts build dotenv_config_path=.env",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "{public,src,*}/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --trailing-comma all --jsx-bracket-same-line --write",
+      "git add"
+    ]
+  },
+  "homepage": "http://localhost:3000/"
+}
