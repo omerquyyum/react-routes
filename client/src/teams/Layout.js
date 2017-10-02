@@ -13,7 +13,7 @@ socket.on('connect', function(){
 
 const TeamLayout = (props) => (
   <SocketProvider socket={socket}>
-      <div style={{backgroundColor: 'red'}}>{props.children}</div>
+      <div>{props.children}</div>
   </SocketProvider>
 );
 

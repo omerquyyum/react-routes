@@ -11,15 +11,24 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+
+    };
 
     //binding functions
     autoBind(this);
   }
 
   handleClick() {
+    const {name, pass} = this.state;
     const { socket } = this.props;
-    socket.emit('PAGE', 'This is Users page...');
+    const data = {
+      name,
+      pass,
+    };
+
+    socket.emit('PAGE', data);
+    socket.on('USER_RESPONSE', (data) => alert(data))
   }
 
   render() {
@@ -30,6 +39,16 @@ class Home extends Component {
           <h1 className="App-title">Users</h1>
         </header>
         <Header />
+        <div className="User-form">
+          <input
+            type='text'
+            onChange={(e) => this.setState({name: e.target.value})}
+          />
+         <input
+            type='text'
+            onChange={(e) => this.setState({pass: e.target.value})}
+         />
+        </div>
         <button onClick={this.handleClick}>Click Here</button>
       </div>
     );

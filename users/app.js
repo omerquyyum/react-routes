@@ -4,7 +4,7 @@ import socketIo from "socket.io";
 require('dotenv').config();
 
 //services
-import {page} from './services/index';
+import {page, user} from './services/index';
 
 const port = process.env.PORT || 4000;
 
@@ -17,7 +17,7 @@ const io = socketIo(server);
 io.on("connection", socket => {
   console.log("User Client connected");
 
-  socket.on("PAGE", (data) => page(socket, data));
+  socket.on("PAGE", (data) => user(socket, data));
 
   socket.on("disconnect", () => console.log("User Client disconnected"));
 });
